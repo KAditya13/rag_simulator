@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kumar Aditya | Futuristic Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #070b14;
+      --card: rgba(18, 25, 44, 0.72);
+      --border: rgba(255,255,255,0.08);
+      --primary: #65e4ff;
+      --secondary: #9c7dff;
+      --text: #f4f7fb;
+      --muted: #9aa7c2;
+      --success: #65ffb1;
+      --gradient: linear-gradient(135deg, #65e4ff 0%, #9c7dff 100%);
+      --shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+
+    body {
+      background: radial-gradient(circle at top left, rgba(101,228,255,0.14), transparent 25%),
+                  radial-gradient(circle at bottom right, rgba(156,125,255,0.12), transparent 25%),
+                  var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      z-index: 50;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 60px;
+      padding: 40px 0 80px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border: 1px solid rgba(101,228,255,0.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      color: var(--primary);
+      margin-bottom: 26px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 700px;
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .primary-btn {
+      background: var(--gradient);
+      box-shadow: 0 10px 30px rgba(101,228,255,0.18);
+    }
+
+    .secondary-btn {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .profile-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 30px;
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(101,228,255,0.25), transparent 70%);
+      top: -80px;
+      right: -80px;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 24px;
+    }
+
+    .profile-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mini-card h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .mini-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: white;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 45px;
+      line-height: 1.8;
+    }
+
+    .glass-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .glass-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      transition: 0.35s ease;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(101,228,255,0.22);
+    }
+
+    .glass-card h3 {
+      margin-bottom: 14px;
+      font-size: 1.2rem;
+    }
+
+    .glass-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .skill-tags span {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 40px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gradient);
+      box-shadow: 0 0 25px rgba(101,228,255,0.6);
+    }
+
+    .timeline-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 50px 0 80px;
+      color: var(--muted);
+    }
+
+    .glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(101,228,255,0.10), transparent 70%);
+      filter: blur(30px);
+      z-index: 0;
+      animation: float 12s infinite ease-in-out;
+    }
+
+    .glow.one {
+      top: -100px;
+      left: -100px;
+    }
+
+    .glow.two {
+      bottom: 0;
+      right: -100px;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        transform: translateY(20px) translateX(10px);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 3rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise"></div>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="container">
+
+    <nav>
+      <div class="logo">Kumar <span>Aditya</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#vision">Vision</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <div class="tag">⚡ Mechanical Engineer • Product Thinker • AI Builder</div>
+
+        <h1>
+          Building the future at the intersection of <span>engineering, AI, product, and business.</span>
+        </h1>
+
+        <p>
+          Final-year Mechanical Engineering student at IIT Madras with a strong interest in product management, AI systems, robotics, quantitative thinking, and technology-driven business strategy. Passionate about solving real-world problems through interdisciplinary innovation.
+        </p>
+
+        <div class="cta-group">
+          <a href="#projects" class="btn primary-btn">Explore Projects</a>
+          <a href="#experience" class="btn secondary-btn">View Experience</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="avatar">KA</div>
+
+        <h2>Kumar Aditya</h2>
+        <p>
+          ENFP • Research Driven • Product Focused • Systems Thinker
+        </p>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h4>Education</h4>
+            <p>IIT Madras</p>
+          </div>
+
+          <div class="mini-card">
+            <h4>CGPA</h4>
+            <p>7.6 / 10</p>
+          </div>
+
+          <div class="mini-card">
+            <h4>Focus Areas</h4>
+            <p>AI, PM, Robotics</p>
+          </div>
+
+          <div class="mini-card">
+            <h4>Goal</h4>
+            <p>Stanford MBA</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        I thrive in environments where engineering, business, and technology converge. My long-term vision is to build high-impact technology products that improve lives at scale. I enjoy breaking down complex systems, understanding user psychology, and turning insights into meaningful product experiences.
+      </p>
+
+      <div class="glass-grid">
+        <div class="glass-card">
+          <h3>🔬 Research & Engineering</h3>
+          <p>
+            Experience with manufacturing systems, CFD exploration, robotics automation, and engineering problem solving through computational thinking.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <h3>🧠 AI & Machine Learning</h3>
+          <p>
+            Building foundations in machine learning, PyTorch, product analytics, and AI-driven product thinking with strong mathematical intuition.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <h3>🚀 Product & Strategy</h3>
+          <p>
+            Deep interest in product management, user psychology, growth systems, retention strategy, and startup thinking.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Core Skills</h2>
+      <p class="section-subtitle">
+        A hybrid skill stack blending engineering rigor, analytical thinking, and product-first execution.
+      </p>
+
+      <div class="glass-grid">
+        <div class="glass-card">
+          <h3>Technical Stack</h3>
+          <div class="skill-tags">
+            <span>Python</span>
+            <span>Machine Learning</span>
+            <span>PyTorch</span>
+            <span>MATLAB</span>
+            <span>Fusion 360</span>
+            <span>CFD</span>
+            <span>COMSOL</span>
+            <span>Data Analysis</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Product & Business</h3>
+          <div class="skill-tags">
+            <span>Product Strategy</span>
+            <span>User Research</span>
+            <span>PRDs</span>
+            <span>Growth Thinking</span>
+            <span>Retention Analysis</span>
+            <span>Market Research</span>
+            <span>Problem Solving</span>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Personal Strengths</h3>
+          <div class="skill-tags">
+            <span>Empathy</span>
+            <span>Communication</span>
+            <span>Systems Thinking</span>
+            <span>Creativity</span>
+            <span>Leadership Potential</span>
+            <span>Adaptability</span>
+            <span>Fast Learner</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Journey Timeline</h2>
+      <p class="section-subtitle">
+        A timeline of growth across engineering, AI, research, and product thinking.
+      </p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <h3>B.Tech in Mechanical Engineering</h3>
+          <h4>IIT Madras</h4>
+          <p>
+            Pursuing a multidisciplinary learning path combining mechanical engineering, AI systems, product management, quantitative thinking, and technology strategy.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <h3>Research & Manufacturing Projects</h3>
+          <h4>Engineering Exploration</h4>
+          <p>
+            Worked on manufacturing inspection systems, CAD modeling in Fusion 360, and automation-related concepts while developing a strong systems-thinking mindset.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <h3>Machine Learning & Robotics</h3>
+          <h4>Self-Driven Learning</h4>
+          <p>
+            Started learning machine learning and exploring applications of AI in robotics and engineering systems using Python and PyTorch.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <h3>Product Management Exploration</h3>
+          <h4>Strategy + User Psychology</h4>
+          <p>
+            Deep-dived into user segmentation, growth loops, PRDs, retention frameworks, and AI-powered product experiences through side projects and structured thinking.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Highlighted Projects</h2>
+      <p class="section-subtitle">
+        Projects that showcase engineering depth, strategic thinking, and curiosity-driven learning.
+      </p>
+
+      <div class="glass-grid">
+
+        <div class="glass-card">
+          <h3>🛠 Manufacturing Inspection System</h3>
+          <p>
+            Designed a detailed inspection and measurement workflow for a manufacturing component, including CAD modeling and dimensional analysis.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <h3>🤖 ML in Robotics Exploration</h3>
+          <p>
+            Exploring how machine learning can improve robotic systems and automation workflows within manufacturing and engineering applications.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <h3>📈 Product Strategy Case Studies</h3>
+          <p>
+            Reverse engineered growth, retention, and segmentation strategies of startups and digital products to sharpen PM intuition.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <h3>🌍 Climate Economics Analysis</h3>
+          <p>
+            Conducted a project on the effects of IC engines on climate economics in India, analyzing externalities, regulations, and market impact.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="vision">
+      <h2 class="section-title">Long-Term Vision</h2>
+      <p class="section-subtitle">
+        My goal is to become a product and technology leader who builds impactful AI-driven products at global scale.
+      </p>
+
+      <div class="glass-card">
+        <p style="font-size: 1.08rem; line-height: 2; color: #d8e2f3;">
+          Over the next few years, I aim to deepen my expertise in product management, machine learning, and business strategy while working on high-impact technology products. Long term, I aspire to pursue an MBA from Stanford and contribute to building the next generation of intelligent systems that blend human-centered design with technical innovation.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <p>
+        Designed & Built by Kumar Aditya • Futuristic Resume Experience • 2026
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.glass-card, .profile-card');
+
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+
+        card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.animate([
+            { opacity: 0, transform: 'translateY(40px)' },
+            { opacity: 1, transform: 'translateY(0px)' }
+          ], {
+            duration: 900,
+            easing: 'ease-out',
+            fill: 'forwards'
+          });
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    document.querySelectorAll('section, .glass-card, .timeline-item').forEach(el => {
+      el.style.opacity = 0;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
